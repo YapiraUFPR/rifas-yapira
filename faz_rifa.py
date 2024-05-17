@@ -10,9 +10,17 @@ Modo de uso:
     $ python3 faz_rifa.py
 """
 
-__author__ = "Gabriel Hishida and Allan Cedric"
+__author__ = "Gabriel Hishida, Allan Cedric and Gabriel Pontarolo"
 
 import pip
+
+PRIZES = [
+    "2 pizzas salgadas (medias) e 1 doce (broto)",
+    "1 kit bolo",
+    "1 caneca de dia dos namorados + caixa de bombom"
+]
+
+DRAW_DATE = "12/06"
 
 def import_or_install(package):
     try:
@@ -119,6 +127,14 @@ if __name__ == "__main__":
         cv2.putText(pic, phone, (63, 335), cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0,0,0), thickness=2)
         cv2.putText(pic, number, (130, 490), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
         cv2.putText(pic, number, (900, 490), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+
+        # Write prizes
+        cv2.putText(pic, PRIZES[0], (960, 180), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+        cv2.putText(pic, PRIZES[1], (960, 235), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+        cv2.putText(pic, PRIZES[2], (960, 290), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
+
+        # Write draw date
+        cv2.putText(pic, DRAW_DATE, (1445, 335), cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.7, color=(0,0,0), thickness=2)
 
         cv2.imshow('Rifa', pic)
         cv2.waitKey(800)
