@@ -35,14 +35,21 @@ except ImportError:
     pip.main(['install', "opencv-python"])
     import cv2     
 
-
 import_or_install("tkinter")
-
 
 import sys
 import tkinter.filedialog
 import tkinter.simpledialog
 import os
+from time import sleep
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class MyDialog(tkinter.simpledialog.Dialog):
     """ Multiple entries dialog, for name, phone, e-mail and more"""
@@ -96,8 +103,10 @@ if __name__ == "__main__":
     
     program_dir = os.path.dirname(os.path.realpath(__file__))
     currdir = os.getcwd()
+    sleep(1)
 
-    path = program_dir+"/rifa.png"
+    # path = os.path.join(program_dir, 'rifa.png')
+    path = resource_path('rifa.png')
     if not os.path.isfile(path):
         path = tkinter.filedialog.askopenfilename(parent=root, initialdir=currdir, title='Selecione o template da rifa')
 
@@ -109,6 +118,9 @@ if __name__ == "__main__":
     while True:
         # Get info:
         popup = MyDialog(root)
+        if not popup.values:
+            break
+        
         name, email, phone, number = popup.values
 
         if not name:
@@ -143,7 +155,7 @@ if __name__ == "__main__":
 
         path = tkinter.filedialog.asksaveasfilename(parent=root, initialdir=currdir, title='Salvo a nova rifa aonde?', initialfile=f"{name}-{number}.png")
         if not path:
-            exit()
+            break
         cv2.imwrite(path, pic)
 
         # Ask whether there are more numbers
