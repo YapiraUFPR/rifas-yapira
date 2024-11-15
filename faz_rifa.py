@@ -15,9 +15,9 @@ __author__ = "Gabriel Hishida, Allan Cedric and Gabriel Pontarolo"
 import pip
 
 PRIZES = [
-    "2 pizzas salgadas (medias) e 1 doce (broto)",
-    "1 kit bolo",
-    "1 caneca de dia dos namorados + caixa de bombom"
+    "Cesta de natal",
+    "Panetone Gourmet",
+    "Kit bolo"
 ]
 
 DRAW_DATE = "12/06"
