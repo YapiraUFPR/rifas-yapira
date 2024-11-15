@@ -20,7 +20,7 @@ PRIZES = [
     "Kit bolo"
 ]
 
-DRAW_DATE = "12/06"
+DRAW_DATE = "20/12"
 
 def import_or_install(package):
     try:
